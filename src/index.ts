@@ -16,8 +16,12 @@
 
 //replaced with the following:
 import app from "./server"
+import * as dotenv from 'dotenv'
+import config from "./config"
 
-app.listen(3001, () => 
+dotenv.config()
+
+app.listen(config.port, () => 
 {
-    console.log("hello on http://localhost:3001")
+    console.log(`hello on http://localhost:${config.port}`)
 })
