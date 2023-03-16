@@ -29,6 +29,21 @@ model User {
   products Product[]
 }
 
+model Customer {
+  id           String   @id @default(uuid())
+  createdAt    DateTime @default(now())
+  username     String   @unique
+  password     String
+  first_name   String
+  last_name    String
+  dob          String
+  civil_status String
+  gender       String
+  phone_no     String  @unique
+  residence    Json
+}
+
+
 model Survey {
   id String @id @default(uuid())
 }

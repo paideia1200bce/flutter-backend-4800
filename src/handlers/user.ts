@@ -29,7 +29,7 @@ import { comparePasswords, createJWT, hashPassword } from "../modules/auth";
 //receives request from the frontend via the res obj
 export const createNewUserPersonalInfo = async (req, res, next) => {
   try{
-    const user = await prisma.user.create({
+    const user = await prisma.customer.create({
       //expecting the following json data from the client request
       data: {
         username: req.body.username,
@@ -53,7 +53,7 @@ export const createNewUserPersonalInfo = async (req, res, next) => {
   }
 }
 
-export const createNewUserSurvey = async (req, res, next) => {
+//export const createNewUserSurvey = async (req, res, next) => {
   // try{
   //   const user = await prisma.survey.create({
   //     //expecting the following json data from the client request
@@ -71,7 +71,7 @@ export const createNewUserSurvey = async (req, res, next) => {
   //   next(e)
 
   // }
-}
+//}
 
 //handler function which communicates with db to find username stored in db and 
 //match it with the one provided by the user in http req
