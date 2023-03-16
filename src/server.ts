@@ -4,7 +4,7 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import { protect } from './modules/auth';
-import { createNewUser, signin } from './handlers/user';
+import { createNewUserPersonalInfo, createNewUserSurvey, signin } from './handlers/user';
 
 const app = express()
 
@@ -41,7 +41,11 @@ app.get('/', (req, res) => {
 app.use('/api', protect, router)
 
 //create new user route
-app.post('/user', createNewUser)
+app.post('/signup', createNewUserPersonalInfo)
+
+app.post('/signup/survey', createNewUserSurvey)
+
+//app.post('/signup', )
 
 //sign in route
 app.post('/signin', signin)

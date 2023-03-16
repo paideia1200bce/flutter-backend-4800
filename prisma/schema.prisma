@@ -1,6 +1,9 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+//reference to model fields: https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#model-fields
+//ex: String etc.
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,11 +14,23 @@ datasource db {
 }
 
 model User {
-  id        String    @id @default(uuid())
-  createdAt DateTime  @default(now())
-  username  String    @unique
-  password  String
-  products  Product[]
+  id           String   @id @default(uuid())
+  createdAt    DateTime @default(now())
+  username     String   @unique
+  password     String
+  first_name   String?
+  last_name    String?
+  dob          String?
+  civil_status String?
+  gender       String?
+  phone_no     String?  @unique
+  residence    Json?
+
+  products Product[]
+}
+
+model Survey {
+  id String @id @default(uuid())
 }
 
 model Product {
@@ -25,6 +40,7 @@ model Product {
   belongsToId String
   belongsTo   User     @relation(fields: [belongsToId], references: [id])
   updates     Update[]
+
   @@unique([id, belongsToId])
 }
 
