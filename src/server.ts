@@ -4,7 +4,7 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import { protect } from './modules/auth';
-import { createNewUserPersonalInfo, createNewUserSurvey, signin } from './handlers/user';
+import { createNewUserPersonalInfo, signin } from './handlers/user';
 
 const app = express()
 
@@ -43,7 +43,7 @@ app.use('/api', protect, router)
 //create new user route
 app.post('/signup', createNewUserPersonalInfo)
 
-app.post('/signup/survey', createNewUserSurvey)
+//app.post('/signup/survey', createNewUserSurvey)
 
 //app.post('/signup', )
 

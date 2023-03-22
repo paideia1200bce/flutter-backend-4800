@@ -33,8 +33,10 @@ export const protect = (req, res, next) => {
   }
 
   try {
+    //console.log("request user", req)
     const payload = jwt.verify(token, process.env.JWT_SECRET) 
     req.user = payload //here is where the user payload is assigned to the request
+    console.log("request user", req)
     next()
   } catch (e){
     console.error(e)
